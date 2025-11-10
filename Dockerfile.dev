@@ -1,8 +1,8 @@
 # Development Dockerfile for hot-reloading
 FROM node:20-alpine
 
-# Add libc6-compat for compatibility
-RUN apk add --no-cache libc6-compat
+# Add libc6-compat for compatibility (optional)
+# RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 

@@ -2,8 +2,8 @@
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
 
-# Add libc6-compat for compatibility with some native dependencies
-RUN apk add --no-cache libc6-compat
+# Add libc6-compat for compatibility with some native dependencies (optional)
+# RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 

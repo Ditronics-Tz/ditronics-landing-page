@@ -55,6 +55,9 @@ coverage
 README.md
 CHANGELOG.md
 LICENSE
+DOCKER.md
+BUILD_GUIDE.md
+DOCKER_QUICKREF.md
 
 # Docker
 Dockerfile
