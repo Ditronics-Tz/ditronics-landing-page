@@ -51,13 +51,13 @@ next-env.d.ts
 coverage
 .nyc_output
 
-# Documentation
-README.md
+# Documentation (exclude from Docker build, but keep README.md)
 CHANGELOG.md
 LICENSE
 DOCKER.md
 BUILD_GUIDE.md
 DOCKER_QUICKREF.md
+IMPLEMENTATION_SUMMARY.md
 
 # Docker
 Dockerfile
