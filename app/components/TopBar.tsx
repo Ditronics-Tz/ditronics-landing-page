@@ -6,39 +6,50 @@ import { motion } from "framer-motion"
 export default function TopBar() {
   return (
     <motion.div
-      initial={{ y: -50 }}
-      animate={{ y: 0 }}
-      className="bg-[#001219] text-white py-2 border-b border-gray-800"
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="relative z-50"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <div className="flex space-x-6">
-            <a href="tel:+255717203759" className="flex items-center space-x-2 text-sm hover:text-[#00FFFF]">
-              <Phone className="w-4 h-4" />
-              <span>+255 717 321 753</span>
-            </a>
-            <a href="mailto:info@ditronics.co.tz" className="flex items-center space-x-2 text-sm hover:text-[#00FFFF]">
-              <Mail className="w-4 h-4" />
-              <span>info@ditronics.co.tz</span>
-            </a>
-          </div>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-[#00FFFF]">
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[#00FFFF]">
-              <Twitter className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[#00FFFF]">
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[#00FFFF]">
-              <Instagram className="w-4 h-4" />
-            </a>
+      <div className="bg-[#2b1233]/70 backdrop-blur-sm border-b border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col gap-3 py-2 text-xs md:flex-row md:items-center md:justify-between md:text-sm text-[#DCD4F4]">
+            <div className="flex flex-wrap items-center gap-4 font-medium tracking-wide">
+              <a
+                href="tel:+255717203759"
+                className="flex items-center gap-2 transition-colors hover:text-[#B9D7F7] focus-ring-brand"
+              >
+                <Phone className="h-4 w-4" />
+                <span>+255 717 321 753</span>
+              </a>
+              <span className="hidden h-4 w-px bg-white/20 md:block" aria-hidden="true" />
+              <a
+                href="mailto:info@ditronics.co.tz"
+                className="flex items-center gap-2 transition-colors hover:text-[#B9D7F7] focus-ring-brand"
+              >
+                <Mail className="h-4 w-4" />
+                <span>info@ditronics.co.tz</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-3 text-[#B9D7F7]">
+              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => {
+                const label = Icon.displayName ?? Icon.name ?? "social"
+                return (
+                <a
+                  key={index}
+                  href="#"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#B9D7F7] hover:text-[#DCD4F4] focus-ring-brand"
+                  aria-label={`Visit our ${label} page`}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+                )
+              })}
+            </div>
           </div>
         </div>
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#B9D7F7]/40 to-transparent" aria-hidden="true" />
       </div>
     </motion.div>
   )
 }
-

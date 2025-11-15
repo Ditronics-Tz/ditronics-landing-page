@@ -4,70 +4,89 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function Projects() {
-  const projects = [
-    {
-      title: "SACAS",
-      description: "Smart Access Control and Attendance System",
-      image: "/images/projects/sacas-preview.png",
-      link: "https://sacas.ditronics.co.tz/"
-    },
-    {
-      title: "ADHIMKITCHEN",
-      description: "Digital Kitchen Management Solution",
-      image: "/images/projects/adhimkitchen-preview.png",
-      link: "https://adhimkitchen.ditronics.co.tz/login"
-    }
-  ]
+const projects = [
+  {
+    title: "SACAS",
+    description: "Smart Access Control and Attendance platform securing institutions across Tanzania.",
+    image: "/images/projects/sacas-preview.png",
+    link: "https://sacas.ditronics.co.tz/",
+    sector: "Education & Government",
+  },
+  {
+    title: "ADHIMKITCHEN",
+    description: "Digitised culinary operations with inventory intelligence and immersive customer experiences.",
+    image: "/images/projects/adhimkitchen-preview.png",
+    link: "https://adhimkitchen.ditronics.co.tz/login",
+    sector: "Hospitality",
+  },
+]
 
+export default function Projects() {
   return (
-    <section className="py-12 bg-[#001219]">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <section id="projects" className="relative py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(74,39,79,0.18),_transparent_65%)]" aria-hidden="true" />
+      <div className="container relative mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <span className="text-xs uppercase tracking-[0.35em] text-[#B9D7F7]">Case Studies</span>
+          <h2 className="mt-4 text-4xl font-semibold text-white md:text-5xl">Digital ecosystems engineered for measurable impact.</h2>
+          <p className="mt-6 text-lg text-[#DCD4F4]/80">
+            Each engagement blends hardware, software, and content strategies to unlock new efficiency and experiences for
+            our partners.
+          </p>
+        </motion.div>
+
+        <div className="mt-16 grid gap-10 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="group"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(18,6,26,0.92),rgba(74,39,79,0.35))] p-8"
             >
-              <Link 
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative rounded-xl overflow-hidden bg-[#001824] hover:bg-[#002030] transition-all duration-300"
-              >
-                <div className="aspect-[16/9] relative h-[240px]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-contain p-4"
-                    priority
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-400 text-lg mb-4">{project.description}</p>
-                  <span className="text-[#00FFFF] text-lg flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Learn More
-                    <svg 
-                      className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+              <div className="absolute -right-10 top-10 h-32 w-32 rounded-full bg-[#B9D7F7]/10 blur-2xl transition group-hover:scale-110" />
+              <div className="relative space-y-6">
+                <div className="relative h-48 overflow-hidden rounded-3xl border border-white/10">
+                  <Image src={project.image} alt={project.title} fill className="object-contain bg-[#12061a]" priority={index === 0} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#12061a]/0 via-transparent to-[#4A274F]/40" />
+                  <span className="absolute left-5 top-5 rounded-full bg-black/40 px-3 py-1 text-xs uppercase tracking-[0.35em] text-[#B9D7F7]">
+                    {project.sector}
                   </span>
                 </div>
-              </Link>
-            </motion.div>
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-semibold text-white">{project.title}</h3>
+                  <p className="text-base text-[#DCD4F4]/80">{project.description}</p>
+                </div>
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#B9D7F7] transition group-hover:gap-4"
+                >
+                  View project dossier
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
     </section>
   )
 }
-
