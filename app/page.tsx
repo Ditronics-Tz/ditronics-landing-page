@@ -1,9 +1,12 @@
 import TopBar from "./components/TopBar"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
+import About from "./components/About"
 import Services from "./components/Services"
+import Clients from "./components/Clients"
 import Projects from "./components/Projects"
-import Leadership from "./components/Leadership"
+import Team from "./components/Team"
+import CTA from "./components/CTA"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 
@@ -12,15 +15,17 @@ export default function Home() {
     <>
       <TopBar />
       <Header />
-      <main>
+      <main className="space-y-8">
         <Hero />
+        <Clients />
+        <About />
         <Services />
         <Projects />
-        <Leadership />
+        <Team />
+        <CTA />
         <Contact />
       </main>
       <Footer />
     </>
   )
 }
-
